@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model HomeViewModel
+
+
+<partial name="_Carousel" />
+
+<div class="text-center">
+    <img src="Images/secondlogo.jpg" style="border-radius: 50%" class="logo-mark mx-auto" />
+    <h1>Pies of the week</h1>
+    <h5>Enjoy a weekly selection of our favorite pies</h5>
+
+    <div class="pies-of-the-week">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var pie in Model.PiesOfWeak)
+            {
+                <partial name="_PieCard" model="pie" />
+            }
+        </div>
+
+    </div>
+</div>

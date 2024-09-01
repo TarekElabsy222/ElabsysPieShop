@@ -1,0 +1,56 @@
+﻿@model ShoppingCartViewModel
+
+<h3 class="my-5">
+    Shopping cart
+</h3>
+
+<div class="row gx-3">
+    <div class="col-lg-8">
+        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        {
+            <div class="card shopping-cart-card mb-2">
+                <div class="row g-0">
+                    <div class="col-4">
+                        <img src="@item.Pie.ImageThumbnaiUrl" class="img-fluid rounded-start p-2" alt="@item.Pie.Name">
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="card-text">@item.Amount x @item.Pie.Name</h5>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6>@item.Pie.ShortDescription</h6>
+                                <h2 class="text-primary">@item.Pie.Price.ToString("c")</h2>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <a asp-controller="ShoppingCart" asp-action="RemoveToShoppingCart" asp-route-pieId="@item.Pie.PieId" class="btn btn-secondary btn-sm">-</a>
+                                <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pieId="@item.Pie.PieId" class="btn btn-success btn-sm">+</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card shopping-cart-card p-3">
+            <h4 class="text-center">Summary</h4>
+            <hr />
+            @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+            {
+                <div class="d-flex justify-content-between">
+                    <span>@item.Pie.Name</span>
+                    <span>@(item.Amount * item.Pie.Price)</span>
+                </div>
+            }
+            <hr />
+            <div class="d-flex justify-content-between">
+                <h4>Total:</h4>
+                <h4 class="text-end">@Model.ShoppingCartTotal.ToString("c")</h4>
+            </div>
+            <hr />
+            <div class="text-center d-grid">
+                <a class="btn btn-secondary" asp-controller="Order" asp-action="Checkout"><h4>Check out now!</h4></a>
+            </div>
+        </div>
+    </div>
+</div>

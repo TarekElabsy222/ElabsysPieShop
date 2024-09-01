@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Elabsy'sPieShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ElabsysPieShop.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+
+        <header style="margin-bottom:12px">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+                 aria-label="Bethany's Pie Shop navigation header">
+                <div class="container-xl">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <h3 class="d-inline-block align-top mb-2 mt-1 logo-style">Elabsy's Pie Shop</h3>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <vc:category-menu></vc:category-menu>
+                            <li class="nav-item">
+                                <a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a>
+                            </li>
+                            
+                        </ul>
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Pie" asp-action="Search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                        <vc:shopping-cart-summary></vc:shopping-cart-summary>
+                        <partial name ="_loginPartial" />
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        @RenderBody()
+
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+</html>

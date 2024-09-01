@@ -1,0 +1,21 @@
+﻿@model Pie
+@{
+	ViewData["Title"] = "Details Pies";
+}
+<h3 class="my-4">@Model.Name</h3>
+<div class="row gx-5 align-items-center">
+	<div class="col-sm-5 mb-3 mb-sm-0">
+		<img alt="@Model.Name" src="@Model.ImageUrl" class="img-fluid" />
+	</div>
+	<div class="col-sm-7">
+		<h4>@Model.ShortDescription</h4>
+		<p>@Model.LongDescription</p>
+		<h3 class="pull-right">@Model.Price.ToString("c")</h3>
+		<div class="addToCart text-sm-end text-center">
+			<a class="btn btn-secondary"
+			   asp-controller="ShoppingCart"
+			   asp-action="AddToShoppingCart"
+			   asp-route-pieId="@Model.PieId">Add to cart</a>
+		</div>
+	</div>
+</div>

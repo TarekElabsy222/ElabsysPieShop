@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ElabsysPieShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ElabsysPieShop.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+
+        <header style="margin-bottom:12px">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary"
+                 aria-label="Bethany's Pie Shop navigation header">
+                <div class="container-xl">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="/images/bethanys-pie-shop-logo_horiz-white.png" width="151" height="47" class="d-inline-block align-top mb-2 mt-1"
+                             alt="Bethany's Pie Shop Logo">
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <vc:category-menu></vc:category-menu>
+                            <li class="nav-item">
+                                <a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a>
+                            </li>
+
+                        </ul>
+                        <vc:shopping-cart-summary></vc:shopping-cart-summary>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        @RenderBody()
+
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>]
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
